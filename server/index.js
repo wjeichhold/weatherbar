@@ -5,6 +5,7 @@ var items = require('../database-mongo');
 var app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(bodyParser.json());
 
 app.get('/items', function (req, res) {
   items.selectAll(function(err, data) {
