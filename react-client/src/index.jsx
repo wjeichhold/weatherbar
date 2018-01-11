@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      bars: [],
+      items: [],
       latitude: null,
       longitude: null
     }
@@ -26,9 +26,9 @@ class App extends React.Component {
     var success = (pos) => {
       var longitude = pos.coords.longitude; 
       var latitude = pos.coords.latitude;
-      this.setState({ longitude, latitude }, () => axios.post('/recommendations', 
-        {lat: this.state.latitude, long: this.state.longitude}).then((response) => {console.log(response)});
-    };
+      this.setState({ longitude, latitude }, () => axios.post('/recommendations', {lat: this.state.latitude, long: this.state.longitude})
+        .then((response) => {console.log(response)})
+    )};
 
     var error = (err) => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -45,7 +45,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Item List</h1>
-      <List bars={this.state.bars}/>
+      <List items={this.state.items}/>
     </div>)
   }
 }

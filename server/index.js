@@ -10,7 +10,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
 
 app.post('/recommendations', function (req, res) {
-  
+  console.log(req.body)
+  res.send('hiii')
 });
 
 app.listen(3000, function() {
