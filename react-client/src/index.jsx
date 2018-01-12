@@ -10,9 +10,11 @@ class App extends React.Component {
     this.state = { 
       items: [],
       latitude: null,
-      longitude: null
+      longitude: null,
+      increment: 0
     }
     this.getLocation = this.getLocation.bind(this);
+    this.incrementer = this.incrementer.bind(this);
   }
 
   getLocation() {
@@ -28,7 +30,7 @@ class App extends React.Component {
       var latitude = pos.coords.latitude;
       console.log(longitude, latitude)
       this.setState({ longitude, latitude }, () => axios.post('/recommendations', {lat: this.state.latitude, long: this.state.longitude})
-        .then((response) => {console.log(response)})
+        .then((response) => {this.setState({items: response.data})})
       )
     };
 
@@ -44,11 +46,23 @@ class App extends React.Component {
     this.getLocation()
   }
 
+  incrementer() {
+    this.setState({increment: this.state.increment+1})
+  }
+
   render () {
+    if (this.state.items.length === 0) {
+      return (<div>
+        <h1>Choosing your bar!</h1>
+        <img src='https://loading.io/spinners/pies/lg.pie-chart-loading-gif.gif'/>
+        </div>
+        )
+    } else {
     return (<div>
       <h1>Item List</h1>
-      <List items={this.state.items}/>
+      <List bar={this.state.items[this.state.increment]} incrementer={this.incrementer}/>
     </div>)
+  }
   }
 }
 

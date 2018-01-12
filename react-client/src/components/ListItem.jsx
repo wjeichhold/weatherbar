@@ -2,7 +2,9 @@ import React from 'react';
 
 const ListItem = (props) => (
   <div>
-    { props.item.description }
+    <img src={props.item.pictureUrl}/>
+    <button type="button" className="btn btn-yes">Into it!</button>
+    <button type="button" className="btn btn-no">What else you got?</button>
   </div>
 )
 

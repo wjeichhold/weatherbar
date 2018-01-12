@@ -15,19 +15,11 @@ app.post('/recommendations', function (req, res) {
   	var icon = weather.minutely.icon;
   	var lat = req.body.lat;
   	var long = req.body.long;
+  	console.log(temp, icon)
   	yelpHelper(temp, icon, lat, long, (data) => {
-  		res.send('hiii')
-  	})
-
-  })
-
-  	// (data) => 
-  	// {}
-
-  //   {yelpHelper(data, (yelpData) => 
-  //     {res.send(yelpData)
-  //   }) 
-  // })
+  		res.send(data)
+  	});
+  });
 });
 
 app.listen(3000, function() {
