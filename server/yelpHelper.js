@@ -2,7 +2,14 @@ var request = require('request');
 var saver = require('../database-mongo/index.js');
 var yelpKey = require('../config.js').yelpKey;
 
-var yelpGetter = function(temp, icon, long, lat, callback) {
+var yelpGetter = function(temp, icon, lat, long, callback) {
+
+  var options = {
+  url: `https://api.yelp.com/v3/businesses/search?term=fireplace&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`,
+  headers: {
+    'Authorization': `Bearer ${yelpKey}`
+    }
+  }
 
   if (temp < 30) {
     options.url = `https://api.yelp.com/v3/businesses/search?term=fireplace&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
@@ -11,13 +18,6 @@ var yelpGetter = function(temp, icon, long, lat, callback) {
   if (temp > 30 && temp < 50) {
   options.url = `https://api.yelp.com/v3/businesses/search?term=dive_bar&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
   }  
-
-  var options = {
-    url: 'https://api.yelp.com/v3/businesses/search?term=' + term + '&latitude=' + lat + '&longitude=' + long + '&limit=9&sort_by=distance&open_now=true',
-    headers: {
-      'Authorization': `Bearer ${yelpKey}`
-    }
-  }
 
 
   request(options, function(err, req, body) {
@@ -28,7 +28,7 @@ var yelpGetter = function(temp, icon, long, lat, callback) {
         bizName: body.businesses[i].name,
         bizUrl: body.businesses[i].url
       }
-      saver.saver(newObj);
+      console.log(newObj)
     }
   })
     callback('done')

@@ -26,9 +26,11 @@ class App extends React.Component {
     var success = (pos) => {
       var longitude = pos.coords.longitude; 
       var latitude = pos.coords.latitude;
+      console.log(longitude, latitude)
       this.setState({ longitude, latitude }, () => axios.post('/recommendations', {lat: this.state.latitude, long: this.state.longitude})
         .then((response) => {console.log(response)})
-    )};
+      )
+    };
 
     var error = (err) => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
