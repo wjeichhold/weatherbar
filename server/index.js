@@ -22,6 +22,16 @@ app.post('/recommendations', function (req, res) {
   });
 });
 
+app.post('/weather', function(req, res) {
+  weatherHelper(req.body.lat, req.body.long, (weather) => {
+    var temp = weather.currently.apparentTemperature;
+    var summary = weather.minutely.summary;
+    var weatherArr = [temp, summary]
+    res.send(weatherArr)
+  })
+})
+
+
 app.listen(3000, function() {
   console.log('listening on port 3000!');
 });

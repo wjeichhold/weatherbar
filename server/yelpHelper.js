@@ -34,9 +34,9 @@ var yelpGetter = function(temp, icon, lat, long, callback) {
         pictureUrl: body.businesses[i].image_url,
         bizName: body.businesses[i].name,
         bizUrl: body.businesses[i].url,
-        coords: body.businesses[i].coordinates
+        coords: body.businesses[i].coordinates,
+        address: body.businesses[i].location.display_address
       }
-      console.log(newObj.address)
       barArray.push(newObj)
     }
     callback(barArray)

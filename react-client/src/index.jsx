@@ -29,7 +29,6 @@ class App extends React.Component {
     var success = (pos) => {
       var longitude = pos.coords.longitude; 
       var latitude = pos.coords.latitude;
-      console.log(longitude, latitude)
       this.setState({ longitude, latitude }, () => axios.post('/recommendations', {lat: this.state.latitude, long: this.state.longitude})
         .then((response) => {this.setState({items: response.data})})
       )
@@ -64,7 +63,7 @@ class App extends React.Component {
         )
     } else {
     return (<div>
-      <h1>Item List</h1>
+      <h1>It's the perfect weather to go to</h1>
       <List bar={this.state.items[this.state.increment]} incrementer={this.incrementer} lat={this.state.latitude} long={this.state.longitude}/>
       <MapWithADirectionsRenderer lat={this.state.latitude} long={this.state.longitude} bar={this.state.items[this.state.increment]}/>
     </div>)

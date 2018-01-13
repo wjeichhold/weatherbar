@@ -24,12 +24,12 @@ const MapWithADirectionsRenderer = compose(
       DirectionsService.route({
         origin: new google.maps.LatLng(this.props.lat, this.props.long),
         destination: new google.maps.LatLng(this.props.bar.coords.latitude, this.props.bar.coords.longitude),
-        travelMode: google.maps.TravelMode.WALKING,
+        travelMode: google.maps.TravelMode.DRIVING,
       }, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
           this.setState({
             directions: result,
-          });
+          })
         } else {
           console.error(`error fetching directions ${result}`);
         }
@@ -42,12 +42,12 @@ const MapWithADirectionsRenderer = compose(
       DirectionsService.route({
         origin: new google.maps.LatLng(this.props.lat, this.props.long),
         destination: new google.maps.LatLng(this.props.bar.coords.latitude, this.props.bar.coords.longitude),
-        travelMode: google.maps.TravelMode.WALKING,
+        travelMode: google.maps.TravelMode.DRIVING,
       }, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
           this.setState({
             directions: result,
-          });
+          })
         } else {
           console.error(`error fetching directions ${result}`);
         }
