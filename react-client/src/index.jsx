@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import axios from 'axios';
+import MapWithADirectionsRenderer from './components/googleMap.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -47,20 +48,25 @@ class App extends React.Component {
   }
 
   incrementer() {
+    if (this.state.increment <= 9) {
     this.setState({increment: this.state.increment+1})
+    } else {
+      alert('make up your damn mind!')
+    }
   }
 
   render () {
     if (this.state.items.length === 0) {
       return (<div>
         <h1>Choosing your bar!</h1>
-        <img src='https://loading.io/spinners/pies/lg.pie-chart-loading-gif.gif'/>
+        <img src='https://loading.io/spinners/pies/lg.pie-chart-loading-gif.gif' className='img-loader'/>
         </div>
         )
     } else {
     return (<div>
       <h1>Item List</h1>
-      <List bar={this.state.items[this.state.increment]} incrementer={this.incrementer}/>
+      <List bar={this.state.items[this.state.increment]} incrementer={this.incrementer} lat={this.state.latitude} long={this.state.longitude}/>
+      <MapWithADirectionsRenderer lat={this.state.latitude} long={this.state.longitude} bar={this.state.items[this.state.increment]}/>
     </div>)
   }
   }
