@@ -29,7 +29,6 @@ class List extends React.Component {
     <div>{this.props.bar.address[0]}<br/>{this.props.bar.address[this.props.bar.address.length-1]}</div>
     <img src={this.props.bar.pictureUrl} alt="https://www.firstcomicsnews.com/wp-content/uploads/2016/09/Garfield-Logo-600x253.png" width="500" height="400"/>
     <p>
-    <button type="button" className="btn btn-yes">Into it!</button>
     <button type="button" className="btn btn-no" onClick={() => {this.props.incrementer()}}>What else you got?</button>
     </p>
   </div>
