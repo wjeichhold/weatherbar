@@ -1,5 +1,4 @@
 import React from 'react';
-import apiKey from '../../../config.js';
 const { compose, withProps, lifecycle } = require("recompose");
 const {
   withScriptjs,
@@ -10,7 +9,7 @@ const {
 
 const MapWithADirectionsRenderer = compose(
   withProps({
-    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${apiKey.googleKey}&v=3.exp&libraries=geometry,drawing,places`,
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.googleKey}&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,

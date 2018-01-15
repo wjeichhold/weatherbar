@@ -1,6 +1,5 @@
 var request = require('request');
 var saver = require('../database-mongo/index.js');
-var yelpKey = require('../config.js').yelpKey;
 
 var yelpGetter = function(temp, icon, lat, long, callback) {
 
@@ -9,7 +8,7 @@ var yelpGetter = function(temp, icon, lat, long, callback) {
   var options = {
   url: `https://api.yelp.com/v3/businesses/search?term=dive_bar&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`,
   headers: {
-    'Authorization': `Bearer ${yelpKey}`
+    'Authorization': `Bearer ${process.env.yelpKey}`
     }
   }
 
