@@ -63,7 +63,7 @@ class App extends React.Component {
         )
     } else {
     return (<div>
-      <h1>It's the perfect weather to go to</h1>
+      <h1>Weatherbar! Using the best of the web today to make you feel the worst tomorrow!</h1>
       <List bar={this.state.items[this.state.increment]} incrementer={this.incrementer} lat={this.state.latitude} long={this.state.longitude}/>
       <MapWithADirectionsRenderer lat={this.state.latitude} long={this.state.longitude} bar={this.state.items[this.state.increment]}/>
     </div>)

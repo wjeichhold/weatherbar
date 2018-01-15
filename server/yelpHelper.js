@@ -12,13 +12,21 @@ var yelpGetter = function(temp, icon, lat, long, callback) {
     }
   }
 
-  if (temp < 30) {
+  if (temp < 30 && (Math.random()*3 > 2)) {
     options.url = `https://api.yelp.com/v3/businesses/search?term=fireplace&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
-    }
+    } else 
+
+  if (temp < 30 && (Math.random()*3 > 1)) {
+    options.url = `https://api.yelp.com/v3/businesses/search?term=cozy&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
+  } else 
+
+  if (temp < 30 && (Math.random()*3 > 0)) {
+    options.url = `https://api.yelp.com/v3/businesses/search?term=cocktails&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
+  } else 
 
   if (temp > 30 && temp < 50) {
   options.url = `https://api.yelp.com/v3/businesses/search?term=dive_bar&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
-  } 
+  } else
 
   if (temp > 60 && temp < 75 && (goodWeather.indexOf(icon) > -1)) {
     options.url = `https://api.yelp.com/v3/businesses/search?term=backyard&latitude=${lat}&longitude=${long}&limit=10&sort_by=distance&open_now=true&categories=bars`
